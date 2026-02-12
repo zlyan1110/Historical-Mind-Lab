@@ -1,0 +1,224 @@
+{
+  "events": [
+    {
+      "year": 548,
+      "month": 8,
+      "location": "建康",
+      "location_en": "Jiankang",
+      "title": "侯景叛乱开始",
+      "title_en": "Hou Jing Rebellion Begins",
+      "description": "侯景率军叛变，自称【宇宙大将军】，起兵反叛梁朝。东魏降将侯景因不满梁武帝的政策，联合萧正德发动叛乱。",
+      "description_en": "Hou Jing, a defector from Eastern Wei, launches rebellion against Liang Dynasty. He proclaims himself 'Universal Great General' and allies with Xiao Zhengde.",
+      "threat_level": 30,
+      "tags": ["rebellion", "military", "political"]
+    },
+    {
+      "year": 548,
+      "month": 10,
+      "location": "建康",
+      "location_en": "Jiankang",
+      "title": "叛军围困建康",
+      "title_en": "Siege of Jiankang Begins",
+      "description": "侯景军队包围建康城(今南京)，梁武帝萧衍被困台城。城内粮食逐渐短缺，守军士气低落。",
+      "description_en": "Hou Jing's forces besiege Jiankang (modern Nanjing). Emperor Wu of Liang is trapped in Taicheng Palace. Food supplies dwindle inside the city.",
+      "threat_level": 50,
+      "tags": ["siege", "famine", "military"]
+    },
+    {
+      "year": 548,
+      "month": 12,
+      "day": 15,
+      "location": "建康",
+      "location_en": "Jiankang",
+      "title": "台城失守",
+      "title_en": "Fall of Taicheng Palace",
+      "description": "台城(皇宫)失守，梁武帝萧衍被俘。侯景军队进入宫城，开始屠杀朝臣和士族成员。城内陷入极度混乱，火光四起，尸横遍野。",
+      "description_en": "Taicheng Palace falls. Emperor Wu is captured. Hou Jing's troops enter the palace, slaughtering court officials and aristocratic families. The city descends into chaos with fires and corpses everywhere.",
+      "threat_level": 95,
+      "tags": ["massacre", "conquest", "extreme_danger"]
+    },
+    {
+      "year": 549,
+      "month": 3,
+      "location": "建康",
+      "location_en": "Jiankang",
+      "title": "梁武帝驾崩",
+      "title_en": "Death of Emperor Wu",
+      "description": "梁武帝萧衍在被囚期间因饥饿和疾病去世，享年86岁。侯景另立简文帝萧纲为傀儡皇帝。",
+      "description_en": "Emperor Wu of Liang dies from starvation and illness while imprisoned, aged 86. Hou Jing installs Emperor Jianwen (Xiao Gang) as a puppet ruler.",
+      "threat_level": 40,
+      "tags": ["death", "political", "regime_change"]
+    },
+    {
+      "year": 549,
+      "month": 6,
+      "location": "江陵",
+      "location_en": "Jiangling",
+      "title": "萧绎在江陵称帝",
+      "title_en": "Xiao Yi Proclaims Himself Emperor in Jiangling",
+      "description": "梁武帝第七子萧绎在江陵(今湖北荆州)自立为帝，即梁元帝。江陵成为梁朝正统的临时都城，相对安全。",
+      "description_en": "Xiao Yi, seventh son of Emperor Wu, proclaims himself Emperor Yuan of Liang in Jiangling (modern Jingzhou, Hubei). Jiangling becomes the temporary legitimate capital, relatively safe.",
+      "threat_level": 10,
+      "tags": ["refuge", "political", "safe_zone"]
+    },
+    {
+      "year": 550,
+      "month": 4,
+      "location": "建康",
+      "location_en": "Jiankang",
+      "title": "侯景称帝",
+      "title_en": "Hou Jing Declares Himself Emperor",
+      "description": "侯景废黜简文帝，自立为帝，国号【汉】。建康城内继续处于暴政之下，大量士族和百姓被杀或逃亡。",
+      "description_en": "Hou Jing deposes Emperor Jianwen and declares himself emperor, establishing the 'Han' dynasty. Jiankang remains under brutal tyranny with mass killings and refugee exodus.",
+      "threat_level": 85,
+      "tags": ["usurpation", "tyranny", "political"]
+    },
+    {
+      "year": 551,
+      "month": 10,
+      "location": "建康",
+      "location_en": "Jiankang",
+      "title": "侯景兵败",
+      "title_en": "Hou Jing's Military Defeat",
+      "description": "陈霸先、王僧辩等将领联军击败侯景。侯景在逃亡途中被部下杀死，尸体被传回建康，尸首示众后投入江中。",
+      "description_en": "Generals Chen Baxian and Wang Sengbian's allied forces defeat Hou Jing. Hou Jing is killed by his own subordinates during flight. His body is displayed in Jiankang before being thrown into the river.",
+      "threat_level": 20,
+      "tags": ["victory", "rebellion_end", "revenge"]
+    },
+    {
+      "year": 552,
+      "month": 1,
+      "location": "建康",
+      "location_en": "Jiankang",
+      "title": "建康光复",
+      "title_en": "Recovery of Jiankang",
+      "description": "王僧辩和陈霸先收复建康，城内满目疮痍。估计死亡人口超过半数，文化典籍损失惨重。",
+      "description_en": "Wang Sengbian and Chen Baxian recapture Jiankang. The city is devastated with over half the population dead and cultural texts heavily damaged.",
+      "threat_level": 15,
+      "tags": ["recovery", "aftermath", "reconstruction"]
+    }
+  ],
+  "locations": [
+    {
+      "ancient_name": "建康",
+      "modern_name": "南京",
+      "name_en": "Jiankang/Nanjing",
+      "lat": 32.0583,
+      "lon": 118.7966,
+      "description": "梁朝都城，长江下游重镇。548年被侯景军队围困，台城失守后成为极度危险区域。",
+      "description_en": "Capital of Liang Dynasty, major city on the lower Yangtze River. Besieged by Hou Jing in 548, becomes extremely dangerous after fall of Taicheng.",
+      "safe_period_start": null,
+      "safe_period_end": null,
+      "danger_level": 90
+    },
+    {
+      "ancient_name": "江陵",
+      "modern_name": "荆州",
+      "name_en": "Jiangling/Jingzhou",
+      "lat": 30.3509,
+      "lon": 112.2051,
+      "description": "长江中游重镇，萧绎(梁元帝)据守之地。549年成为梁朝正统临时都城，相对安全的避难所。",
+      "description_en": "Major city on middle Yangtze River, held by Xiao Yi (Emperor Yuan). Becomes temporary legitimate capital in 549, relatively safe refuge.",
+      "safe_period_start": 549,
+      "safe_period_end": 554,
+      "danger_level": 20
+    },
+    {
+      "ancient_name": "台城",
+      "modern_name": "南京玄武湖东南",
+      "name_en": "Taicheng Palace",
+      "lat": 32.0667,
+      "lon": 118.8000,
+      "description": "梁朝皇宫所在地，位于建康城内。548年12月失守，梁武帝被俘。",
+      "description_en": "Location of Liang Dynasty imperial palace within Jiankang. Falls in December 548, Emperor Wu captured.",
+      "safe_period_start": null,
+      "safe_period_end": null,
+      "danger_level": 100
+    },
+    {
+      "ancient_name": "秦淮河",
+      "modern_name": "秦淮河",
+      "name_en": "Qinhuai River",
+      "lat": 32.0183,
+      "lon": 118.7789,
+      "description": "建康城内主要河流，码头众多。叛乱期间成为重要逃生通道，可乘船南下或西行。",
+      "description_en": "Major river through Jiankang with many docks. Becomes important escape route during rebellion, boats can travel south or west.",
+      "safe_period_start": null,
+      "safe_period_end": null,
+      "danger_level": 50
+    }
+  ],
+  "figures": [
+    {
+      "name": "颜之推",
+      "name_en": "Yan Zhitui",
+      "birth_year": 531,
+      "role": "scholar",
+      "description": "南北朝时期著名学者，儒家思想家。侯景之乱时经历建康陷落，后辗转多地，最终完成《颜氏家训》传世。",
+      "description_en": "Renowned scholar of Northern and Southern Dynasties period, Confucian thinker. Survived fall of Jiankang during Hou Jing Rebellion, later wrote the famous 'Family Instructions of Yan'.",
+      "mbti": "ISTP",
+      "survival_strategy": "pragmatic_adaptation"
+    },
+    {
+      "name": "侯景",
+      "name_en": "Hou Jing",
+      "birth_year": 503,
+      "death_year": 552,
+      "role": "rebel_leader",
+      "description": "东魏降将，叛乱首领。548年起兵反梁，围困建康，后自立为帝。551年兵败被杀。",
+      "description_en": "Defector from Eastern Wei, rebellion leader. Launched rebellion in 548, besieged Jiankang, declared himself emperor. Defeated and killed in 551.",
+      "threat_level": 95
+    },
+    {
+      "name": "梁武帝萧衍",
+      "name_en": "Emperor Wu of Liang (Xiao Yan)",
+      "birth_year": 464,
+      "death_year": 549,
+      "role": "emperor",
+      "description": "梁朝开国皇帝，在位48年。548年被侯景军队围困于台城，549年饿死。",
+      "description_en": "Founding emperor of Liang Dynasty, reigned 48 years. Besieged in Taicheng by Hou Jing in 548, died of starvation in 549.",
+      "fate": "death_by_starvation"
+    },
+    {
+      "name": "萧绎(梁元帝)",
+      "name_en": "Xiao Yi (Emperor Yuan of Liang)",
+      "birth_year": 508,
+      "death_year": 555,
+      "role": "emperor",
+      "description": "梁武帝第七子，549年在江陵称帝。江陵时期为避难士人提供庇护。",
+      "description_en": "Seventh son of Emperor Wu, proclaimed emperor in Jiangling in 549. Provided refuge for fleeing scholars during Jiangling period.",
+      "safe_harbor": true
+    }
+  ],
+  "survival_tips": [
+    {
+      "situation": "建康城破",
+      "advice": "立即离开城区，避开主要街道。叛军会搜捕朝廷官员和士族成员。儒学背景的文人尤其危险。",
+      "advice_en": "Leave city immediately, avoid main streets. Rebels hunt court officials and aristocrats. Confucian scholars are especially targeted.",
+      "recommended_action": "move_to:江陵"
+    },
+    {
+      "situation": "资源不足",
+      "advice": "典籍虽珍贵，但生存优先。可用经书换取食物或渡河费用。金银最为实用。",
+      "advice_en": "Though texts are precious, survival comes first. Books can be traded for food or river passage. Gold and silver most practical.",
+      "recommended_action": "trade_resources"
+    },
+    {
+      "situation": "夜间行动",
+      "advice": "秦淮河夜间有商船活动，可趁夜色避开巡逻。向西至江陵，或向南至寻阳。",
+      "advice_en": "Qinhuai River has merchant boats at night, use darkness to avoid patrols. Head west to Jiangling or south to Xunyang.",
+      "recommended_action": "wait:nightfall"
+    }
+  ],
+  "metadata": {
+    "period": "南北朝·梁朝末期",
+    "period_en": "Northern and Southern Dynasties - Late Liang",
+    "primary_conflict": "侯景之乱 (Hou Jing Rebellion)",
+    "years_covered": "548-552 CE",
+    "sources": [
+      "《梁书》(Book of Liang)",
+      "《南史》(History of the Southern Dynasties)",
+      "《颜氏家训》(Yan's Family Instructions)"
+    ]
+  }
+}
