@@ -75,7 +75,9 @@ export function useSimulation() {
       });
 
       if (!response.ok) {
-        throw new Error(`Failed to start simulation: ${response.statusText}`);
+        const errorText = await response.text();
+        console.error('Start simulation failed:', response.status, errorText);
+        throw new Error(`Failed to start simulation (${response.status}): ${errorText || response.statusText}`);
       }
 
       const data = await response.json();

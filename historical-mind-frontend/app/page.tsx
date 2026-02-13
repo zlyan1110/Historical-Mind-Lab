@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import Map from '@/components/Map';
 import { useSimulation } from '@/hooks/useSimulation';
 import { useWebSocket } from '@/hooks/useWebSocket';
@@ -19,12 +19,80 @@ export default function Home() {
     loading,
     error,
     createSimulation,
+    getSimulationState,
     startSimulation,
     stepSimulation,
     getHistory,
   } = useSimulation();
 
   const { events, isConnected, clearEvents } = useWebSocket(simulationId);
+
+  // Update simulation state when WebSocket events indicate completion or state change
+  useEffect(() => {
+    if (!simulationId || events.length === 0) return;
+
+    const latestEvent = events[events.length - 1];
+
+    // When simulation completes or state updates, refresh the simulation state
+    if (latestEvent.type === 'simulation_completed' || latestEvent.type === 'state_update') {
+      getSimulationState(simulationId).catch(err => {
+        console.error('Failed to refresh simulation state:', err);
+      });
+    }
+  }, [events, simulationId, getSimulationState]);
+
+  // Build location history from WebSocket events
+  const locationHistory = useMemo(() => {
+    const locations: any[] = [];
+    const seenLocations = new Set<string>();
+
+    console.log('Building location history from events:', events.length);
+
+    // Extract location data from WebSocket events
+    events.forEach((event, index) => {
+      console.log(`Event ${index}:`, event.type, event.data?.location?.name);
+
+      // Capture locations from simulation_started, state_update, and simulation_completed
+      const isLocationEvent = ['simulation_started', 'state_update', 'simulation_completed'].includes(event.type);
+
+      if (isLocationEvent && event.data?.location) {
+        const locationKey = `${event.data.location.name}-${event.data.turn || 0}`;
+        if (!seenLocations.has(locationKey)) {
+          seenLocations.add(locationKey);
+          const loc = {
+            location: {
+              place_name: event.data.location.name,
+              lat: event.data.location.lat,
+              lon: event.data.location.lon,
+            },
+            turn: event.data.turn || 0,
+            timestamp: event.timestamp,
+            stress_level: event.data.psychology?.stress || 0,
+            action: event.data.last_action || '',
+            thought: event.data.last_thought || '',
+          };
+          console.log('Adding location:', loc);
+          locations.push(loc);
+        }
+      }
+    });
+
+    // If no locations from events yet but we have current location, add it
+    if (locations.length === 0 && currentSimulation?.current_frame?.location) {
+      console.log('No locations from events, using currentSimulation');
+      locations.push({
+        location: currentSimulation.current_frame.location,
+        turn: currentSimulation.current_frame.turn || 0,
+        timestamp: new Date().toISOString(),
+        stress_level: currentSimulation.current_frame.psych_state?.stress || 0,
+        action: '',
+        thought: '',
+      });
+    }
+
+    console.log('Final location history:', locations);
+    return locations;
+  }, [events, currentSimulation]);
 
   const handleCreateSimulation = async () => {
     try {
@@ -184,18 +252,23 @@ export default function Home() {
 
                   <button
                     onClick={handleStartSimulation}
-                    disabled={loading}
+                    disabled={loading || currentSimulation?.status === 'completed' || currentSimulation?.status === 'running'}
                     className="w-full bg-green-600 text-white py-2 px-4 rounded-md hover:bg-green-700 disabled:bg-gray-400 transition-colors"
                   >
-                    {loading ? 'Starting...' : '▶️ Start Simulation'}
+                    {loading ? 'Starting...' :
+                     currentSimulation?.status === 'completed' ? '✅ Completed' :
+                     currentSimulation?.status === 'running' ? '🔄 Running...' :
+                     '▶️ Start Simulation'}
                   </button>
 
                   <button
                     onClick={handleStepSimulation}
-                    disabled={loading}
+                    disabled={loading || currentSimulation?.status === 'completed'}
                     className="w-full bg-yellow-600 text-white py-2 px-4 rounded-md hover:bg-yellow-700 disabled:bg-gray-400 transition-colors"
                   >
-                    {loading ? 'Stepping...' : '⏭️ Step (1 Turn)'}
+                    {loading ? 'Stepping...' :
+                     currentSimulation?.status === 'completed' ? '✅ Completed' :
+                     '⏭️ Step (1 Turn)'}
                   </button>
 
                   <button
@@ -205,6 +278,15 @@ export default function Home() {
                   >
                     {loading ? 'Loading...' : '📜 View History'}
                   </button>
+
+                  {currentSimulation?.status === 'completed' && (
+                    <div className="bg-green-50 border border-green-200 rounded-md p-3">
+                      <p className="text-sm text-green-800 font-semibold">✅ Simulation Completed!</p>
+                      <p className="text-xs text-green-600 mt-1">
+                        Create a new simulation to run again.
+                      </p>
+                    </div>
+                  )}
                 </div>
               </div>
             )}
@@ -216,23 +298,23 @@ export default function Home() {
 
                 <div className="space-y-3 text-sm">
                   <div>
-                    <span className="font-semibold">Turn:</span> {currentSimulation.current_frame.turn}
+                    <span className="font-semibold">Turn:</span> {currentSimulation.current_frame?.turn || 0}
                   </div>
                   <div>
-                    <span className="font-semibold">Location:</span> {currentSimulation.current_frame.location.place_name}
+                    <span className="font-semibold">Location:</span> {currentSimulation.current_frame?.location?.place_name || 'N/A'}
                   </div>
                   <div>
                     <span className="font-semibold">Stress:</span>{' '}
                     <span className={`font-bold ${
-                      currentSimulation.current_frame.psych_state.stress >= 80 ? 'text-red-600' :
-                      currentSimulation.current_frame.psych_state.stress >= 50 ? 'text-yellow-600' :
+                      (currentSimulation.current_frame?.psych_state?.stress || 0) >= 80 ? 'text-red-600' :
+                      (currentSimulation.current_frame?.psych_state?.stress || 0) >= 50 ? 'text-yellow-600' :
                       'text-green-600'
                     }`}>
-                      {currentSimulation.current_frame.psych_state.stress}/100
+                      {currentSimulation.current_frame?.psych_state?.stress || 0}/100
                     </span>
                   </div>
                   <div>
-                    <span className="font-semibold">Focus:</span> {currentSimulation.current_frame.psych_state.focus}
+                    <span className="font-semibold">Focus:</span> {currentSimulation.current_frame?.psych_state?.focus || 'N/A'}
                   </div>
                   <div>
                     <span className="font-semibold">Status:</span>{' '}
@@ -262,7 +344,8 @@ export default function Home() {
             <div className="bg-white rounded-lg shadow-md overflow-hidden">
               <div className="h-[500px]">
                 <Map
-                  currentLocation={currentSimulation?.current_frame.location}
+                  currentLocation={currentSimulation?.current_frame?.location}
+                  locationHistory={locationHistory}
                   className="rounded-lg"
                 />
               </div>
