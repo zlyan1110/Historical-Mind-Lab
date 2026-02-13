@@ -1,4 +1,6 @@
 server.log
+backend.log
+frontend.log
 *.pyc
 __pycache__/
 .pytest_cache/
